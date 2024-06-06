@@ -105,7 +105,7 @@ FUNCTION {punct.colon}
 }
 
 FUNCTION {punct.slash}
-{ "//\allowbreak{}"
+{ ". \allowbreak{}"
 }
 
 FUNCTION {punct.space}
@@ -493,6 +493,10 @@ FUNCTION {set.mark}
 FUNCTION {format.mark}
 { "\allowbreak[" entry.mark * "]" * }
 
+FUNCTION {format.markc}
+{ "\allowbreak[C]" }
+
+
 FUNCTION {format.full.names}
 {'s :=
   #1 'nameptr :=
@@ -873,8 +877,8 @@ FUNCTION {format.edition}
 
 FUNCTION {format.sine.loco}
 { is.in.chinese
-    { "[出版地不详]" }
-    { "[S.l.]" }
+    { "" }
+    { "" }
   if$
 }
 
@@ -883,8 +887,8 @@ FUNCTION {format.address}
 
 FUNCTION {format.sine.nomine}
 { is.in.chinese
-    { "[出版地不详]" }
-    { "[s.n.]" }
+    { "" }
+    { "" }
   if$
 }
 
@@ -909,8 +913,8 @@ FUNCTION {format.publisher}
 
 FUNCTION {format.sine.loco.sine.nomine}
 { is.in.chinese
-    { "[出版地不详: 出版者不详]" }
-    { "[S.l.: s.n.]" }
+    { "" }
+    { "" }
   if$
 }
 
@@ -1118,7 +1122,7 @@ FUNCTION {incollection}
   author format.key output
   new.block
   format.title "title" output.check
-  "M" set.mark
+  "A" set.mark
   format.mark "" output.after
   new.block
   format.translators output
@@ -1126,6 +1130,8 @@ FUNCTION {incollection}
   format.editors output
   new.block
   format.series.vol.num.booktitle "booktitle" output.check
+  "C" set.mark
+  format.markc "" output.after
   new.block
   format.edition output
   new.block
@@ -1262,7 +1268,7 @@ FUNCTION {dataset}
 FUNCTION {inbook} { book }
 
 FUNCTION {inproceedings}
-{ "C" set.mark
+{ 
   incollection
 }
 

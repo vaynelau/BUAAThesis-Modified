@@ -77,13 +77,13 @@
 
 % !TeX program = xelatex
 
-\documentclass[master,privacy,twoside,win]{buaa}
+\documentclass[master,oneside,win]{buaa}
 
 %=================================================================
 % 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
-\refcolor{on}   % 开启: on[默认]; 关闭: off;
+\refcolor{off}   % 开启: on[默认]; 关闭: off;
 % 摘要和正文从右侧页开始
-\beginright{on} % 开启: on[默认]; 关闭: off;
+\beginright{off} % 开启: on[默认]; 关闭: off;
 % 空白页留字
 \emptypagewords{[ -- This page is a preset empty page -- ]}
 
@@ -103,14 +103,19 @@
 % For Mac: times, fontspec
 %--------------------
 % 请在此处添加额外工具包>>
-
-
+\usepackage{algorithmic}
+\usepackage{makecell}
+\usepackage[flushleft]{threeparttable}
+\usepackage{longtable}
 %=================================================================
 % buaa模板已内嵌以下LaTeX宏:
 %--------------------
 % \highlight{text} % 黄色高亮
 %--------------------
 % 请在此处添加自定义宏>>
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{ \textbf{已知：}}
+\emergencystretch=\maxdimen
 
 
 %%=================================================================
@@ -173,7 +178,7 @@
 }
 
 % 图标目录
-\Listfigtab{bi} % 启用: on[默认]; 双标题：bi; 关闭: off;
+\Listfigtab{on} % 启用: on[默认]; 双标题：bi; 关闭: off;
 
 % 缩写定义 按tabular环境或其他列表环境编写
 \Abbreviations{ \centering
@@ -227,7 +232,7 @@
 \input{tex/chap_acknowledge}
 
 % 作者简介
-\input{tex/chap_biography}
+% \input{tex/chap_biography}
 
 \vspace{5cm}
 

@@ -21,6 +21,8 @@
 *.log
 *.fdb_latexm
 *.synctex.gz
+*.lof2
+*.lot2
 
 # Latex build results.
 *-converted-to.pdf

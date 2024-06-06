@@ -112,7 +112,7 @@
 
 %% 引用ctexbook: 小4,1.5倍行距
 \LoadClass[UTF8,zihao=-4,linespread=1.7]{ctexbook}%1.5+0.2行间距
-\setcounter{secnumdepth}{5}
+% \setcounter{secnumdepth}{5}
 
 %% BUAAThesis字样及版本信息
 \usepackage{graphicx}
@@ -187,6 +187,16 @@
 %   \RequirePackage{times}        % Times New Roman字体
 %   \RequirePackage{fontspec}     % 字体设置 (!Only for XeLaTeX!)
 % }{}
+
+\RequirePackage{amssymb,amsfonts,mathrsfs,bm}
+% \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
+\RequirePackage{txfonts}
+
+%%%%%%%%%% hyphen %%%%%%%%%%
+% For the `\hyp{}` command. Allow the user to insert `hyp{}` manually to
+% adjust the line break when necessary.
+\RequirePackage{hyphenat}
+
 
 % 统一不同系统的字体设置
 \RequirePackage{times}        % Times New Roman字体
@@ -373,14 +383,14 @@
 \let\org@table\table
 \let\org@endtable\endtable
 \renewenvironment{table}[1][h!]
-{\begin{spacing}{1.2} \org@table[#1] \songti\zihao{5}}
-{\org@endtable \end{spacing}}
+{\begin{spacing}{1.2} \renewcommand{\arraystretch}{1.5} \org@table[#1] \songti\zihao{5}}
+{\renewcommand{\arraystretch}{1} \org@endtable \end{spacing}}
 
 \let\org@longtable\longtable
 \let\org@endlongtable\endlongtable
 \renewenvironment{longtable}[1][h!]
-{\begin{spacing}{1.2} \songti\zihao{5}\org@longtable[#1]}
-{\org@endlongtable \end{spacing}}
+{\begin{spacing}{1.2} \renewcommand{\arraystretch}{1.5} \songti\zihao{5}\org@longtable[#1]}
+{\renewcommand{\arraystretch}{1} \org@endlongtable \end{spacing}}
 
 \@removefromreset{table}{chapter}
 \@removefromreset{figure}{chapter}
@@ -396,11 +406,11 @@
 \DeclareCaptionFormat{tabfigformat}{\bf\songti\zihao{5}{#1~~#3}}
 
 \captionsetup[figure]{
-  position=bottom, margin=0mm, format=tabfigformat,
-  aboveskip=6pt, belowskip=-15pt, justification=centerlast}
+  position=bottom, format=tabfigformat,
+  justification=centerlast}
 \captionsetup[table]{
-  position=top, margin=0mm, format=tabfigformat,
-  aboveskip=0pt, belowskip=0pt, justification=centerlast}
+  position=top, format=tabfigformat,
+  justification=centerlast}
 
 \captionsetup[figure][bi-first]{name=图}      %设置图的中文前缀
 \captionsetup[table][bi-first]{name=表}       %设置表的中文前缀
@@ -408,11 +418,11 @@
 \captionsetup[table][bi-second]{name=Tab.}   %设置表的英文前缀
 
 \captionsetup[figure][bi]{
-  position=bottom, margin=0mm, format=tabfigformat,
-  aboveskip=6pt, belowskip=-15pt, justification=centerlast}
+  position=bottom, format=tabfigformat,
+  justification=centerlast}
 \captionsetup[table][bi]{
-  position=top, margin=0mm, format=tabfigformat,
-  aboveskip=0pt, belowskip=0pt, justification=centerlast}
+  position=top, format=tabfigformat,
+  justification=centerlast}
 
 %出现在页面中间的浮动对象与上下方文本之间的垂直距离
 %缺省为 12pt plus 2pt minus 2pt。
